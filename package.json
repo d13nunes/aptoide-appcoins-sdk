@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-appcoins-sdk",
+  "name": "aptoide-appcoins-sdk",
   "version": "0.0.1",
   "description": "Capacitor plugin for Aptoide AppCoins Sdk",
   "main": "dist/plugin.cjs.js",
@@ -26,6 +26,9 @@
   },
   "keywords": [
     "capacitor",
+    "appcoins",
+    "sdk",
+    "aptoide",
     "plugin",
     "native"
   ],
@@ -46,20 +49,20 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.0.0",
-    "@capacitor/core": "^7.0.0",
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
     "@capacitor/docgen": "^0.3.0",
-    "@capacitor/ios": "^7.0.0",
+    "@capacitor/ios": "^7.4.2",
     "@ionic/eslint-config": "^0.4.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
-    "eslint": "^8.57.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-java": "^2.6.6",
+    "eslint": "^8.57.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-java": "^2.7.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.30.1",
+    "rollup": "^4.46.2",
     "swiftlint": "^2.0.0",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.6"
   },
   "peerDependencies": {
     "@capacitor/core": ">=7.0.0"
