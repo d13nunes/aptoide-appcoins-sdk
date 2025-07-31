@@ -1,7 +1,7 @@
 {
-  "name": "aptoide-appcoins-sdk",
+  "name": "aptoide-appcoinssdk",
   "version": "0.0.1",
-  "description": "Capacitor plugin for Aptoide AppCoins Sdk",
+  "description": "Unofficial",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -13,28 +13,25 @@
     "ios/Sources",
     "ios/Tests",
     "Package.swift",
-    "CapacitorAppcoinsSdk.podspec"
+    "AptoideAppcoinssdk.podspec"
   ],
-  "author": "Diogo Nunes",
-  "license": "MIT",
+  "author": "Diogo",
+  "license": "Mit",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/d13nunes/capacitor-appcoinssdk.git"
+    "url": "git+https://github.com/d13nunes/aptoide-appcoins-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/d13nunes/capacitor-appcoinssdk/issues"
+    "url": "https://github.com/d13nunes/aptoide-appcoins-sdk/issues"
   },
   "keywords": [
     "capacitor",
-    "appcoins",
-    "sdk",
-    "aptoide",
     "plugin",
     "native"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "xcodebuild -scheme CapacitorAppcoinsSdk -destination generic/platform=iOS",
+    "verify:ios": "xcodebuild -scheme AptoideAppcoinssdk -destination generic/platform=iOS",
     "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
@@ -49,20 +46,20 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.4.2",
-    "@capacitor/core": "^7.4.2",
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
     "@capacitor/docgen": "^0.3.0",
-    "@capacitor/ios": "^7.4.2",
+    "@capacitor/ios": "^7.0.0",
     "@ionic/eslint-config": "^0.4.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
-    "eslint": "^8.57.1",
-    "prettier": "^3.6.2",
-    "prettier-plugin-java": "^2.7.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-java": "^2.6.6",
     "rimraf": "^6.0.1",
-    "rollup": "^4.46.2",
+    "rollup": "^4.30.1",
     "swiftlint": "^2.0.0",
-    "typescript": "~4.1.6"
+    "typescript": "~4.1.5"
   },
   "peerDependencies": {
     "@capacitor/core": ">=7.0.0"
