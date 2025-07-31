@@ -13,10 +13,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "7.0.0",
     "@capacitor/core": "latest",
-    "aptoide-appcoinssdk": "file:..",
-    "@capacitor/ios": "7.0.0",
-    "@capacitor/android": "7.0.0"
+    "@capacitor/ios": "^7.4.2",
+    "aptoide-appcoinssdk": "file:.."
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
