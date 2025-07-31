@@ -59,15 +59,13 @@ window.loadPurchases = async () => {
 }
 
 window.isAvailable = async () => {
+  console.log("isAvailable", AppCoinsSdk.isAvailable);
   const { isAvailable } = await AppCoinsSdk.isAvailable();
   document.getElementById('isAvailable').textContent = isAvailable;
 }
 
 window.onload = () => {
     console.log("onload");
-    window.isAvailable();
-    window.loadProducts();
-    window.loadPurchases();
 };
 
 window.testEcho = () => {
