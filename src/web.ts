@@ -1,6 +1,7 @@
 import { WebPlugin } from '@capacitor/core';
+import type { PluginListenerHandle } from '@capacitor/core';
 
-import type { AppCoinsSdkPlugin } from './definitions';
+import type { AppCoinsSdkPlugin, AptoideProduct, AptoidePurchase, TransactionEvent } from './definitions';
 
 export class AppCoinsSdkWeb extends WebPlugin implements AppCoinsSdkPlugin {
   async echo(options: { value: string }): Promise<{ value: string }> {
@@ -13,7 +14,7 @@ export class AppCoinsSdkWeb extends WebPlugin implements AppCoinsSdkPlugin {
     return { isAvailable: false };
   }
 
-  async getProducts(): Promise<{ products: Array<{ sku: string; title: string; description: string; price: number; currency: string; label: string }> }> {
+  async getProducts(): Promise<{ products: AptoideProduct[] }> {
     console.log('getProducts called on web');
     return { products: [] };
   }
@@ -23,13 +24,13 @@ export class AppCoinsSdkWeb extends WebPlugin implements AppCoinsSdkPlugin {
     throw new Error('Purchase not supported on web');
   }
 
-  async getPurchases(): Promise<{ purchases: Array<{ purchaseId: string; sku: string; state: string }> }> {
+  async getPurchases(): Promise<{ purchases: AptoidePurchase[] }> {
     console.log('getPurchases called on web');
-    return { purchases: [] };
+    throw new Error('Purchase not supported on web');
   }
 
-  async consumePurchase(options: { purchaseId: string }): Promise<void> {
-    console.log('consumePurchase called on web', options);
-    throw new Error('Consume purchase not supported on web');
+  async addListener(eventName: 'transaction', listenerFunc: (event: TransactionEvent) => void): Promise<PluginListenerHandle> {
+    console.log('listen called on web', eventName, listenerFunc);
+    throw new Error('Purchase not supported on web');
   }
 }

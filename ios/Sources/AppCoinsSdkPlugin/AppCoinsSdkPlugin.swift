@@ -15,6 +15,7 @@ public class AppCoinsSdkPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "getProducts", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "purchase", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "getPurchases", returnType: CAPPluginReturnPromise),
+      
         // CAPPluginMethod(name: "consumePurchase", returnType: CAPPluginReturnPromise)
     ]
     private let implementation = AppCoinsSdk()
@@ -23,10 +24,6 @@ public class AppCoinsSdkPlugin: CAPPlugin, CAPBridgedPlugin {
   
     override public func load() {
         super.load()
-        print("🔌 AppCoinsSdkPlugin loaded successfully")
-        print("🔌 Plugin identifier: \(identifier)")
-        print("🔌 Plugin jsName: \(jsName)")
-        print("🔌 Available methods: \(pluginMethods.map { $0.name })")
         Task { await observePurchases() }
     }
   
@@ -39,24 +36,39 @@ public class AppCoinsSdkPlugin: CAPPlugin, CAPBridgedPlugin {
     
   // HINT: You can use the same handle method for both regular and intent IAP
     private func handle(result: PurchaseResult) async {
+      do {
         switch result {
-          case .success(let verificationResult):
+        case .success(let verificationResult):
           switch verificationResult {
           case .verified(let purchase):
-            // consume the item and give it to the user
-            do {
-              try await purchase.finish()
-            } catch {
-              // TODO handle error
-              print("error")
-            }
+            self.notifyListeners("transaction", data: [
+              "purchaseId": purchase.orderUid,
+              "sku": purchase.sku,
+              "state": purchase.state,
+              "type": "success"
+            ])
+            try await purchase.finish()
+            return
           case .unverified(let purchase, let verificationError):
             // deal with unverified transactions
+            break
           }
-          case .pending: // transaction is not finished
-          case .userCancelled: // user cancelled the transaction
-          case .failed(let error): // deal with any possible errors
+          
+        case .pending: // transaction is not finished
+          break
+        case .userCancelled: // user cancelled the transaction
+          break
+        case .failed(let error): // deal with any possible errors
+          break
         }
+        self.notifyListeners("transaction", data: [
+          "message": "Aptoide transaction failed",
+          "type": "error"
+        ])
+     
+      } catch {
+        print("Error handling purchase intent: \(error.localizedDescription)" )
+      }
     }
 
   @objc func isAvailable(_ call: CAPPluginCall)  {
