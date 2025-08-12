@@ -95,7 +95,7 @@ public class AppCoinsSdkPlugin: CAPPlugin, CAPBridgedPlugin {
                 "title": product.title,
                 "description": product.description,
                 "price": product.priceValue,
-                "currency": product.priceCurrency,
+                "currency": product.priceSymbol,
                 "label": product.priceLabel
               ]
             }
